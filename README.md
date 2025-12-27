@@ -23,7 +23,7 @@ Discord support: https://juniorit.ai/virtual-office
 
 Fork and clone this project, then work with `Claude Code` and `OpenAI Codex` by default via Agent Skills integration.
 
-For Gemini CLI or other AI Agents that do not support Agent skills natively, you can use them as an MCP server by configuring:
+For `Gemini CLI` or other AI Agents that do not support Agent skills natively, you can use them as an MCP server by configuring:
 
 ```json
 {
