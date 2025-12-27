@@ -60,12 +60,16 @@ npm install --global corepack@latest
 corepack enable pnpm
 ```
 
-Verify installation:
+verify:
 ```bash
 pnpm --version
 ```
 
-### 5. Update Project Configuration
+### 5. Executing Packages (dlx)
+
+For any command that typically uses `npx package`, use `pnpm dlx package` in this project.
+
+### 6. Update Project Configuration
 
 After successful installation, update the `AGENTS.md` file in the root of the project to indicate that `pnpm` will be used for package management.
 

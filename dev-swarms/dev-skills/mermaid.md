@@ -7,14 +7,14 @@ mmdc --version
 
 Example diagram file: `diagram.mmd`
 
-"""mermaid
+```mermaid
 flowchart TD
     A[Idea] --> B[AI Agent]
     B --> C[Design]
     C --> D[Code]
     D --> E[Test]
     E --> F[Deploy]
-"""
+```
 
 Generate SVG:
-mmdc -i diagram.mmd -o diagram.svg
+`mmdc -i diagram.mmd -o diagram.svg`

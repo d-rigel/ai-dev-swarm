@@ -21,4 +21,6 @@ pnpm --version
 
 Before any installation, the agent should check the existing installation and ask the user for confirmation.
 
-This skill helps the user install and setup nvm/Node.js/pnpm, and updates the `AGENTS.md` file in the root of the project to inform the AI Agent that pnpm will be used.
+For any `npx package`, we should use `pnpm dlx package` in this project
+
+This skill helps the user install and setup nvm/Node.js/pnpm, and updates the `AGENTS.md` file in the root of the project to inform the AI Agent that pnpm will be used for this project.
