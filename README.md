@@ -124,3 +124,9 @@ Let’s redefine how products are built in the AI era.
 One idea. One person. One AI swarm. 🚀
 
 Join our Discord server for discussion: https://juniorit.ai/virtual-office
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+This project may include open source code with other licenses. These codes will keep their original licenses.
