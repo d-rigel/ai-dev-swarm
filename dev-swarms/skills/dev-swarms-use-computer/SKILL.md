@@ -7,6 +7,31 @@ description: Control the computer by taking screenshots, moving the mouse, click
 
 This skill enables an agent to interact with the computer's graphical user interface (GUI). It can retrieve screen information, take screenshots of specific regions, and perform mouse and keyboard actions.
 
+## When to Use This Skill
+
+- User needs to interact with GUI applications programmatically
+- User asks to automate mouse and keyboard actions
+- User wants to take screenshots of specific screen regions
+- User needs to test UI flows or perform visual verification
+- User requires automated interaction with desktop applications
+
+## Your Roles in This Skill
+
+- **QA Engineer**: Use computer control to perform automated UI testing and verification. Take screenshots to capture UI states and verify visual elements. Execute test scripts that require GUI interaction. Verify application behavior through visual feedback.
+- **DevOps Engineer**: Execute Python scripts for computer control operations. Manage system permissions for screen recording and accessibility. Configure screen coordinates and interaction parameters. Troubleshoot PyAutoGUI fail-safe and permission issues.
+
+## Role Communication
+
+As an expert in your assigned roles, you must announce your actions before performing them using the following format:
+
+- As a DevOps Engineer, I will verify system permissions for screen recording and accessibility
+- As a QA Engineer, I will take screenshots to understand current screen layout and coordinates
+- As a QA Engineer, I will execute mouse and keyboard actions to interact with GUI elements
+- As a QA Engineer, I will verify action results through visual feedback
+- As a DevOps Engineer, I will handle any fail-safe triggers or permission issues
+
+This communication pattern ensures transparency and allows for human-in-the-loop oversight at key decision points.
+
 ## Instructions
 
 All interactions are performed via the `use_computer.py` script. Run it using `uv` from the project root:

@@ -7,6 +7,30 @@ description: Capture and inspect specific screen regions (e.g., mobile simulator
 
 This skill allows an AI agent to inspect a mobile app, an iOS/Android simulator, or any specific part of the screen.
 
+## When to Use This Skill
+
+- User needs to debug UI issues in mobile simulator or app
+- User wants AI agent to inspect specific screen region
+- User asks to capture and analyze app window or UI element
+- User needs visual feedback for troubleshooting GUI applications
+
+## Your Roles in This Skill
+
+- **QA Engineer**: Set up screen capture tools for UI inspection and debugging. Configure capture regions to focus on relevant UI elements. Verify screen capture functionality and troubleshoot capture issues. Guide users through window positioning and configuration.
+- **DevOps Engineer**: Execute Python script to run screen streaming server. Manage background processes for screen capture. Handle server port configuration and accessibility. Verify system permissions for screen recording.
+
+## Role Communication
+
+As an expert in your assigned roles, you must announce your actions before performing them using the following format:
+
+- As a DevOps Engineer, I will start the screen streaming background process with appropriate parameters
+- As a QA Engineer, I will guide user through positioning the capture window over target UI
+- As a QA Engineer, I will verify screen capture is working by accessing the preview URL
+- As a QA Engineer, I will fetch snapshots to inspect UI elements and debug visual issues
+- As a DevOps Engineer, I will troubleshoot any permission or connectivity issues
+
+This communication pattern ensures transparency and allows for human-in-the-loop oversight at key decision points.
+
 ## Instructions
 
 1.  **Start the Screen Stream Process**:

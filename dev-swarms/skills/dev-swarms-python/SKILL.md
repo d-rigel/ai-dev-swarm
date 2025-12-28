@@ -7,9 +7,32 @@ description: Install and configure Python and uv. Use when setting up a Python e
 
 This skill assists in installing and configuring the Python environment using `uv` for fast package and project management.
 
+## When to Use This Skill
+
+- User needs to set up Python development environment
+- User wants to install or configure uv package manager
+- User asks to initialize Python project
+- User needs to update AGENTS.md with Python setup details
+
 ## Prerequisites
 
 - `curl` (macOS/Linux) or PowerShell (Windows).
+
+## Your Roles in This Skill
+
+- **DevOps Engineer**: Install and configure Python environment using uv. Initialize Python projects with virtual environments. Manage Python versions and dependencies. Verify installations and troubleshoot setup issues. Update project documentation to reflect environment setup.
+
+## Role Communication
+
+As an expert in your assigned roles, you must announce your actions before performing them using the following format:
+
+- As a DevOps Engineer, I will check for existing uv installation
+- As a DevOps Engineer, I will install uv using the appropriate platform installer
+- As a DevOps Engineer, I will initialize Python project with uv if needed
+- As a DevOps Engineer, I will configure Python version pinning for the project
+- As a DevOps Engineer, I will update AGENTS.md with Python environment details
+
+This communication pattern ensures transparency and allows for human-in-the-loop oversight at key decision points.
 
 ## Instructions
 

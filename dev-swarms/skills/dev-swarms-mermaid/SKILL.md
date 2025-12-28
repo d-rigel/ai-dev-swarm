@@ -7,9 +7,32 @@ description: Create Mermaid diagrams and convert them to images. Use when needin
 
 This skill provides instructions for creating Mermaid diagrams and converting them to SVG or PNG images using the Mermaid CLI (`mmdc`).
 
+## When to Use This Skill
+
+- User needs to visualize flows, architecture, or data structures
+- User asks to create diagrams for documentation
+- User wants to convert Mermaid syntax to image files
+- User needs flowcharts, sequence diagrams, class diagrams, or ER diagrams
+
 ## Prerequisites
 
 - Node.js and pnpm must be installed (refer to `dev-swarms-nodejs` skill if needed).
+
+## Your Roles in This Skill
+
+- **Tech Manager (Architect)**: Design diagram structures to effectively communicate system architecture and data flows. Choose appropriate diagram types for different use cases. Ensure diagrams accurately represent technical concepts and relationships.
+- **DevOps Engineer**: Execute Mermaid CLI commands to generate diagrams. Verify pnpm and Node.js installations. Convert Mermaid files to SVG or PNG formats. Troubleshoot diagram generation issues.
+
+## Role Communication
+
+As an expert in your assigned roles, you must announce your actions before performing them using the following format:
+
+- As a Tech Manager, I will determine the appropriate diagram type for the use case
+- As a DevOps Engineer, I will verify Mermaid CLI availability using pnpm dlx
+- As a DevOps Engineer, I will create the Mermaid diagram file with proper syntax
+- As a DevOps Engineer, I will generate SVG or PNG output from the Mermaid file
+
+This communication pattern ensures transparency and allows for human-in-the-loop oversight at key decision points.
 
 ## Installation
 

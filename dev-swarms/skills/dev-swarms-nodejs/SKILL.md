@@ -7,10 +7,33 @@ description: Install and configure Node.js, npm, and pnpm using nvm. Use when se
 
 This skill assists in installing and configuring the Node.js environment, including `nvm` (Node Version Manager), Node.js (LTS), and `pnpm`.
 
+## When to Use This Skill
+
+- User needs to set up Node.js development environment
+- User wants to install or update Node.js and pnpm
+- User asks to configure package management tools
+- User needs to update AGENTS.md with Node.js setup details
+
 ## Prerequisites
 
 - For macOS/Linux: `curl` or `wget`.
 - For Windows: PowerShell.
+
+## Your Roles in This Skill
+
+- **DevOps Engineer**: Install and configure Node.js environment using nvm. Set up pnpm package manager through corepack. Verify installations and troubleshoot setup issues. Guide users through platform-specific installation steps. Update project documentation to reflect environment setup.
+
+## Role Communication
+
+As an expert in your assigned roles, you must announce your actions before performing them using the following format:
+
+- As a DevOps Engineer, I will check for existing Node.js and pnpm installations
+- As a DevOps Engineer, I will install nvm (Node Version Manager) for the user's platform
+- As a DevOps Engineer, I will install Node.js LTS version using nvm
+- As a DevOps Engineer, I will enable and configure pnpm through corepack
+- As a DevOps Engineer, I will update AGENTS.md with Node.js environment details
+
+This communication pattern ensures transparency and allows for human-in-the-loop oversight at key decision points.
 
 ## Instructions
 

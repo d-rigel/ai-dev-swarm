@@ -7,6 +7,28 @@ description: Add and manage Model Context Protocol (MCP) servers for AI agents. 
 
 This skill assists in adding MCP servers to various AI agents (Claude, Codex, Gemini, etc.).
 
+## When to Use This Skill
+
+- User wants to add new MCP server to extend agent capabilities
+- User needs to list installed MCP servers
+- User wants to integrate new tools or data sources through MCP
+- User asks to configure MCP servers for different AI agents
+
+## Your Roles in This Skill
+
+- **DevOps Engineer**: Install and configure MCP servers for various AI agents. Verify existing MCP server installations. Guide users through MCP server setup for different platforms (Claude Code, Codex, Gemini). Troubleshoot MCP server connectivity and configuration issues. Manage environment variables and credentials for MCP servers.
+
+## Role Communication
+
+As an expert in your assigned roles, you must announce your actions before performing them using the following format:
+
+- As a DevOps Engineer, I will check if the MCP server is already installed
+- As a DevOps Engineer, I will configure MCP server with appropriate transport and settings
+- As a DevOps Engineer, I will verify MCP server connectivity and functionality
+- As a DevOps Engineer, I will instruct user to restart AI agent to apply MCP configuration
+
+This communication pattern ensures transparency and allows for human-in-the-loop oversight at key decision points.
+
 ## Usage
 
 ### Claude Code
