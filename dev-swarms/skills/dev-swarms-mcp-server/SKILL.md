@@ -71,6 +71,26 @@ To add an MCP server:
 gemini mcp add [options] <name> <commandOrUrl> [args...]
 ```
 
+Or update config file at 
+
+~/.gemini/settings.json 
+{PROJECT_ROOT}/.gemini/settings.json 
+
+```json
+{
+  "mcpServers": {
+    "skillz": {
+      "command": "uvx",
+      "args": [
+        "skillz@latest",
+        "/path/skills",
+        "--verbose"
+      ]
+    }
+  }
+}
+```
+
 ### Other AI Agents
 
 For other agents, try checking the help command first:

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "skillz": {
+      "command": "uvx",
+      "args": [
+        "skillz@latest",
+        "dev-swarms/skills",
+        "--verbose"
+      ]
+    }
+  }
+}
