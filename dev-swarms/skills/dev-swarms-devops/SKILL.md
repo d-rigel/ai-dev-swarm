@@ -38,66 +38,122 @@ This communication pattern ensures transparency and allows for human-in-the-loop
 
 Follow these steps in order:
 
-### Step 1: Assess Current Environment
+### Step 0: Verify Prerequisites and Gather Context
 
-1. **Check if `08-devops/` folder exists:**
+1. **Check if `07-tech-specs/` folder exists (mandatory):**
+   - If NOT found: Inform user they need to define tech specs first, then STOP
+   - If found: Read all files to understand:
+     - Technology stack chosen
+     - Development tools needed
+     - Infrastructure requirements
+
+2. **Check if `00-init-ideas/` folder exists (recommended):**
+   - If found: Read to understand:
+     - Cost budget (to understand constraints for this stage)
+
+3. **Check if this stage should be skipped:**
+   - Check if `08-devops/SKIP.md` exists
+   - **If SKIP.md exists:**
+     - Read SKIP.md to understand why this stage was skipped
+     - Inform the user: "Stage 8 (devops) is marked as SKIP because [reason from SKIP.md]"
+     - Ask the user: "Would you like to proceed to the next stage (sprints)?"
+     - **If user says yes:**
+       - Exit this skill and inform them to run the next stage skill
+     - **If user says no:**
+       - Ask if they want to proceed with devops anyway
+       - If yes, delete SKIP.md and continue with this skill
+       - If no, exit the skill
+
+4. **Check if `08-devops/` folder exists:**
    - If exists: Read all existing files to understand current state
    - If NOT exists: Will create new structure
 
-2. **Check current git configuration:**
+5. **Assess Current Environment:**
    - Run `git remote -v` to check if remote repository is linked
    - Check if `.git` directory exists
-
-3. **Check existing MCP configuration:**
    - Look for existing MCP tools configuration
-   - Check if Claude Desktop or other MCP clients are configured
-
-4. **Check existing Docker/Dev Container setup:**
-   - Look for `.devcontainer/` folder
+   - Check for `.devcontainer/` folder
    - Check for `Dockerfile` or `docker-compose.yml`
 
-5. Proceed to Step 2 with gathered context
+6. **Analyze Project Requirements:**
+   - Based on the tech stack (from `07-tech-specs/`), determine if project needs:
+     - Local development only
+     - Cloud development environment
+     - Containerized development
+     - Specific MCP tools (Playwright, GitHub, AWS, etc.)
+   - Identify complexity level:
+     - **Basic**: Simple projects with minimal setup
+     - **Standard**: Projects requiring GitHub + basic MCP tools
+     - **Complex**: Projects requiring full cloud setup, multiple MCP tools, advanced Docker configurations
 
-### Step 2: Analyze Project Requirements
+7. Proceed to Step 1 with gathered context
 
-Based on the tech stack (from `07-tech-specs/`) and project requirements:
+### Step 1: Refine Design Requirements in README and Get Approval
 
-1. Determine if project needs:
-   - Local development only
-   - Cloud development environment
-   - Containerized development
-   - Specific MCP tools (Playwright, GitHub, AWS, etc.)
+**CRITICAL: Create/update README.md first based on previous stage results, get user approval, then create setup plan files.**
 
-2. Identify complexity level:
-   - **Basic**: Simple projects with minimal setup
-   - **Standard**: Projects requiring GitHub + basic MCP tools
-   - **Complex**: Projects requiring full cloud setup, multiple MCP tools, advanced Docker configurations
+1. **Analyze information from previous stages:**
+   - Read `07-tech-specs/` to understand technology stack and tools
+   - Consider cost-budget constraints for this stage
+   - Assess current environment status
 
-### Step 3: Create Setup Plan Files
+2. **Create or update 08-devops/README.md with refined requirements:**
+   - **Stage overview and objectives** (based on previous stage context)
+   - **Owners:** DevOps Engineer (lead), Infrastructure Architect
+   - **What devops setup will include:**
+     - GitHub repository setup (if needed)
+     - MCP tools configuration (list which tools)
+     - Development container setup (if needed)
+     - CI/CD pipeline configuration (if applicable)
+   - **Methodology:**
+     - How environment will be configured
+     - What tools will be installed
+   - **Deliverables planned:**
+     - List of files that will be created (github-setup.md, mcp-setup.md, etc.)
+   - **Budget allocation for this stage** (from cost-budget.md)
+   - **Status:** In Progress (update to "Completed" after implementation)
 
-**IMPORTANT**: These files serve dual purposes:
+3. **Present README to user:**
+   - Show the devops approach and what will be configured
+   - Show what setup files will be created
+   - Explain how it aligns with previous stages and tech stack
+   - Ask: "Does this devops setup plan look good? Should I proceed with creating setup configurations?"
+
+4. **Wait for user approval:**
+   - **If user says yes:** Proceed to Step 2
+   - **If user says no:**
+     - Ask what needs to be changed
+     - Update README based on feedback
+     - Ask for approval again
+
+### Step 2: Create Setup Plan Files
+
+**Only after user approves the README:**
+
+**IMPORTANT:** The file structure below is a SAMPLE only. The actual files you create must follow what was approved in the README.md in Step 1.
+
+**These files serve dual purposes:**
 1. **Initially**: Setup plans/instructions for user approval
 2. **Finally**: Documentation of the actual environment (source of truth for future reset/update)
 
-1. **Create folder structure:**
+1. **Create files as specified in the approved README.md:**
+
+   **Typical structure (example):**
    ```
    08-devops/
-   ├── README.md
-   ├── github-setup.md
-   ├── mcp-setup.md
-   └── vscode-devcontainer.md
+   ├── README.md (already created and approved in Step 1)
+   ├── github-setup.md (if specified in README)
+   ├── mcp-setup.md (if specified in README)
+   └── vscode-devcontainer.md (if specified in README)
    ```
+
+   **Create only the files listed in the README's "Deliverables planned" section.**
 
 2. **Create setup plan files with proposed configurations:**
 
-**08-devops/README.md:**
-- Specify the owner: DevOps Engineer
-- Specify attendances: Infrastructure Architect
-- Overview of this stage
-- Links to all setup documentation files
-- Current environment status (will be updated after execution)
+**NOTE:** The content structure below provides GUIDELINES for typical devops setup files. Adapt based on the approved README and project needs.
 
-**github-setup.md (Setup Plan):**
+**github-setup.md (if specified in README - Setup Plan):**
 Write as a setup plan with:
 - Proposed GitHub repository settings
 - Branch protection rules to be configured
@@ -129,15 +185,15 @@ Write as a setup plan with:
 - Post-create commands
 - Clear step-by-step setup instructions
 
-### Step 4: Get User Confirmation
+### Step 3: Get User Confirmation
 
-1. Present all three setup plan files to the user
+1. Present all setup plan files to the user
 2. Explain what will be configured/installed
 3. Ask user to review and confirm before proceeding
 4. Make any adjustments based on user feedback
 5. **DO NOT PROCEED** until user explicitly confirms
 
-### Step 5: Execute Setup Tasks
+### Step 4: Execute Setup Tasks
 
 **ONLY AFTER USER CONFIRMATION**, execute each setup:
 
@@ -172,7 +228,7 @@ Write as a setup plan with:
    - Retry failed steps with corrections
    - Fix Dockerfile or configuration issues as needed
 
-### Step 6: Verification and Testing
+### Step 5: Verification and Testing
 
 For each completed setup:
 
@@ -197,7 +253,7 @@ For each completed setup:
    - Verify port forwarding is configured
    - Test development workflow inside container
 
-### Step 7: Update Documentation Files
+### Step 6: Update Documentation Files
 
 **CRITICAL**: Update all setup files to reflect actual environment:
 
@@ -239,15 +295,23 @@ For each completed setup:
 - Onboarding new team members
 - Debugging environment issues
 
-### Step 8: Final User Review
+### Step 7: Final User Review
 
-1. Present the updated documentation showing actual configuration
-2. Show verification results for all setups
-3. Confirm everything is working as expected
+1. **Inform user that devops setup is complete**
+2. **Update README.md:**
+   - Change **Status** from "In Progress" to "Completed"
+   - Add a **Summary** section with key insights (2-3 paragraphs)
+   - Add a **Created Files** section listing all created files
+
+3. **Present completed work to user:**
+   - Show the updated documentation showing actual configuration
+   - Show verification results for all setups
+   - Confirm everything is working as expected
+
 4. Ask if they want to proceed to `09-sprints/` (next stage)
-5. Make any final adjustments if needed
+5. Make any final adjustments based on user feedback if needed
 
-### Step 9: Commit to Git
+### Step 8: Commit to Git
 
 1. **Ask user if they want to commit the setup:**
    - Stage all changes in `08-devops/`

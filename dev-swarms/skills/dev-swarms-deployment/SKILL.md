@@ -44,60 +44,123 @@ This communication pattern ensures transparency and allows for human-in-the-loop
 
 Follow these steps in order:
 
-### Step 1: Assess Current State
+### Step 0: Verify Prerequisites and Gather Context
 
-1. **Check if `10-deployment/` folder exists:**
+1. **Check if `09-sprints/` folder exists (recommended):**
+   - If found: Read to understand:
+     - Development progress and readiness
+     - Features completed
+
+2. **Check if `07-tech-specs/` folder exists (mandatory):**
+   - If NOT found: Inform user they need to define tech specs first, then STOP
+   - If found: Read all files to understand:
+     - Technology stack chosen
+     - Infrastructure requirements
+     - Deployment needs
+
+3. **Check if `00-init-ideas/` folder exists (recommended):**
+   - If found: Read to understand:
+     - Cost budget (to understand constraints for deployment)
+
+4. **Check if this stage should be skipped:**
+   - Check if `10-deployment/SKIP.md` exists
+   - **If SKIP.md exists:**
+     - Read SKIP.md to understand why this stage was skipped
+     - Inform the user: "Stage 10 (deployment) is marked as SKIP because [reason from SKIP.md]"
+     - Ask the user: "Would you like to proceed anyway?"
+     - **If user says yes:**
+       - Delete SKIP.md and continue with this skill
+     - **If user says no:**
+       - Exit the skill
+
+5. **Check if `10-deployment/` folder exists:**
    - If exists: Read all existing files to understand current deployment state
    - If NOT exists: Will create new structure
 
-2. **Check application readiness:**
+6. **Assess Current State:**
    - Verify build process works (`npm run build`, `docker build`, etc.)
    - Check if tests pass
    - Review tech specs from `07-tech-specs/` for deployment requirements
    - Check if application has production configuration files
-
-3. **Check existing cloud infrastructure:**
    - Look for existing cloud configurations (AWS, Azure, GCP credentials)
    - Check for infrastructure as code files (Terraform, CloudFormation, etc.)
    - Review existing deployment scripts or CI/CD configurations
-
-4. **Check existing CI/CD setup:**
    - Look for `.github/workflows/` (GitHub Actions)
    - Check for other CI/CD configurations (Jenkins, GitLab CI, CircleCI, etc.)
-   - Review existing deployment automation
 
-5. Proceed to Step 2 with gathered context
+7. **Analyze Deployment Requirements:**
 
-### Step 2: Analyze Deployment Requirements
+   Based on the tech stack (from `07-tech-specs/`) and project requirements:
 
-Based on the tech stack (from `07-tech-specs/`) and project requirements:
+   - Determine deployment needs:
+     - **Hosting Platform**: Static hosting (Netlify, Vercel), PaaS (Heroku, Railway), IaaS (AWS EC2, Azure VMs), Container (ECS, Kubernetes), Serverless (Lambda, Cloud Functions)
+     - **Database Hosting**: Managed database service vs self-hosted
+     - **Storage**: Object storage (S3, Azure Blob), CDN requirements
+     - **Compute**: Serverless, containers, or VMs
+     - **Environments**: Development, staging, production (number of environments needed)
 
-1. Determine deployment needs:
-   - **Hosting Platform**: Static hosting (Netlify, Vercel), PaaS (Heroku, Railway), IaaS (AWS EC2, Azure VMs), Container (ECS, Kubernetes), Serverless (Lambda, Cloud Functions)
-   - **Database Hosting**: Managed database service vs self-hosted
-   - **Storage**: Object storage (S3, Azure Blob), CDN requirements
-   - **Compute**: Serverless, containers, or VMs
-   - **Environments**: Development, staging, production (number of environments needed)
+   - Identify complexity level:
+     - **Basic**: Simple static sites or single PaaS deployment
+     - **Standard**: Multi-environment setup with managed services, basic CI/CD
+     - **Complex**: Multi-region deployment, microservices, advanced CI/CD, infrastructure as code, auto-scaling
 
-2. Identify complexity level:
-   - **Basic**: Simple static sites or single PaaS deployment
-   - **Standard**: Multi-environment setup with managed services, basic CI/CD
-   - **Complex**: Multi-region deployment, microservices, advanced CI/CD, infrastructure as code, auto-scaling
+   - Determine CI/CD requirements:
+     - Automated testing before deployment
+     - Deployment approval process
+     - Rollback strategy
+     - Deployment frequency and schedule
 
-3. Determine CI/CD requirements:
-   - Automated testing before deployment
-   - Deployment approval process
-   - Rollback strategy
-   - Deployment frequency and schedule
+   - Identify monitoring and observability needs:
+     - Application performance monitoring (APM)
+     - Error tracking and logging
+     - Uptime monitoring
+     - Alerting channels (email, Slack, PagerDuty)
+     - Analytics and metrics
 
-4. Identify monitoring and observability needs:
-   - Application performance monitoring (APM)
-   - Error tracking and logging
-   - Uptime monitoring
-   - Alerting channels (email, Slack, PagerDuty)
-   - Analytics and metrics
+8. Proceed to Step 1 with gathered context
 
-### Step 3: Create Deployment Plan Files
+### Step 1: Refine Design Requirements in README and Get Approval
+
+**CRITICAL: Create/update README.md first based on previous stage results, get user approval, then create deployment plan files.**
+
+1. **Analyze information from previous stages:**
+   - Read `07-tech-specs/` to understand technology stack and infrastructure needs
+   - Consider cost-budget constraints for deployment
+   - Assess application readiness from Step 0
+
+2. **Create or update 10-deployment/README.md with refined requirements:**
+   - **Stage overview and objectives** (based on previous stage context)
+   - **Owners:** Deployment Engineer (lead), DevOps Engineer, SysOps Engineer, Site Reliability Engineer
+   - **What deployment will include:**
+     - Infrastructure setup (hosting, database, storage)
+     - CI/CD pipeline configuration
+     - Deployment strategy (blue-green, rolling, canary)
+     - Monitoring and logging setup
+     - Environment configurations
+   - **Methodology:**
+     - How infrastructure will be provisioned
+     - How CI/CD will be configured
+   - **Deliverables planned:**
+     - List of files that will be created (infrastructure-plan.md, cicd-pipeline.md, etc.)
+   - **Budget allocation for deployment** (from cost-budget.md)
+   - **Status:** In Progress (update to "Completed" after deployment)
+
+3. **Present README to user:**
+   - Show the deployment approach and what will be configured
+   - Show what setup files will be created
+   - Explain cost implications of chosen infrastructure
+   - Ask: "Does this deployment plan look good? Should I proceed with creating deployment configurations?"
+
+4. **Wait for user approval:**
+   - **If user says yes:** Proceed to Step 2
+   - **If user says no:**
+     - Ask what needs to be changed
+     - Update README based on feedback
+     - Ask for approval again
+
+### Step 2: Create Deployment Plan Files
+
+**Only after user approves the README:**
 
 **IMPORTANT**: These files serve dual purposes:
 1. **Initially**: Deployment plans/instructions for user approval
@@ -191,7 +254,7 @@ Write as a deployment plan with:
 - Feature flags per environment
 - Clear step-by-step configuration instructions
 
-### Step 4: Get User Confirmation
+### Step 3: Get User Confirmation
 
 1. Present all deployment plan files to the user
 2. Explain what will be deployed and configured
@@ -200,7 +263,7 @@ Write as a deployment plan with:
 5. Make any adjustments based on user feedback
 6. **DO NOT PROCEED** until user explicitly confirms
 
-### Step 5: Execute Infrastructure Setup
+### Step 4: Execute Infrastructure Setup
 
 **ONLY AFTER USER CONFIRMATION**, execute each setup:
 
@@ -255,7 +318,7 @@ Write as a deployment plan with:
    - **Fix any errors encountered during setup**
    - Retry failed steps with corrections
 
-### Step 6: Initial Deployment
+### Step 5: Initial Deployment
 
 1. **Deploy to Development/Staging First:**
    - Follow deployment strategy from `deployment-strategy.md`
@@ -280,7 +343,7 @@ Write as a deployment plan with:
    - Be prepared to rollback if issues occur
    - Document deployment completion
 
-### Step 7: Verification and Testing
+### Step 6: Verification and Testing
 
 For each deployed environment:
 
@@ -315,7 +378,7 @@ For each deployed environment:
    - Notifications are received
    - Dashboards display data correctly
 
-### Step 8: Update Documentation Files
+### Step 7: Update Documentation Files
 
 **CRITICAL**: Update all deployment files to reflect actual environment:
 
@@ -375,7 +438,7 @@ For each deployed environment:
 - Onboarding new team members
 - Disaster recovery procedures
 
-### Step 9: Security and Compliance Check
+### Step 8: Security and Compliance Check
 
 1. **Security Review:**
    - Verify all secrets are stored securely
@@ -396,17 +459,26 @@ For each deployed environment:
    - Verify data residency requirements
    - Check backup and retention policies
 
-### Step 10: Final User Review
+### Step 9: Final User Review
 
-1. Present the updated documentation showing actual deployment
-2. Show verification results for all environments
-3. Provide URLs to access deployed application
-4. Share monitoring dashboard links
-5. Confirm everything is working as expected
-6. Provide handoff documentation for ongoing maintenance
-7. Ask if they want any adjustments or additional configurations
+1. **Inform user that deployment is complete**
+2. **Update README.md:**
+   - Change **Status** from "In Progress" to "Completed"
+   - Add a **Summary** section with key insights (2-3 paragraphs)
+   - Add a **Created Files** section listing all created files
+   - Add **Deployment URLs** section with links to deployed environments
 
-### Step 11: Commit to Git
+3. **Present completed work to user:**
+   - Show the updated documentation showing actual deployment
+   - Show verification results for all environments
+   - Provide URLs to access deployed application
+   - Share monitoring dashboard links
+   - Confirm everything is working as expected
+   - Provide handoff documentation for ongoing maintenance
+
+4. Ask if they want any adjustments or additional configurations
+
+### Step 10: Commit to Git
 
 1. **Ask user if they want to commit the deployment documentation:**
    - Stage all changes in `10-deployment/`

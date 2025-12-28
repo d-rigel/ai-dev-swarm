@@ -77,7 +77,7 @@ Follow these steps in order:
 
 ### Step 0: Verify Prerequisites and Gather Context
 
-0. **Review planning inputs before initializing sprints/backlogs:**
+1. **Review planning inputs before initializing sprints/backlogs:**
    - `02-personas/` for personas and prioritized user stories
    - `03-mvp/` for scope boundaries and MVP success metrics
    - `04-prd/` for functional and non-functional requirements
@@ -86,25 +86,89 @@ Follow these steps in order:
    - `07-tech-specs/` for technology choices and standards
    - `08-devops/` for environment/tooling readiness and constraints
 
-1. **Check if `09-sprints/` folder exists:**
-   - If NOT found: Create new folder structure with `README.md` refer to `templates/sprints-readme.md`
+2. **Check if `00-init-ideas/` folder exists (recommended):**
+   - If found: Read to understand:
+     - Cost budget (to understand constraints for development)
+
+3. **Check if this stage should be skipped:**
+   - Check if `09-sprints/SKIP.md` exists
+   - **If SKIP.md exists:**
+     - Read SKIP.md to understand why this stage was skipped
+     - Inform the user: "Stage 9 (sprints) is marked as SKIP because [reason from SKIP.md]"
+     - Ask the user: "Would you like to proceed to the next stage (deployment)?"
+     - **If user says yes:**
+       - Exit this skill and inform them to run the next stage skill
+     - **If user says no:**
+       - Ask if they want to proceed with sprint management anyway
+       - If yes, delete SKIP.md and continue with this skill
+       - If no, exit the skill
+
+4. **Check if `09-sprints/` folder exists:**
+   - If NOT found: Will create new folder structure (requires README approval in Step 1)
    - If found: Read `sprints-index.md` to understand current sprint status
 
-2. **Check if `features/` folder exists:**
+5. **Check if `features/` folder exists:**
    - If NOT found: no any feature completed, ignore it for now
    - If found: Read `features-index.md` to understand implemented features
 
-3. **Use templates for consistency:**
+6. **Use templates for consistency:**
    - Templates are located in this skill's `templates/` folder
    - Use templates when creating sprints, backlogs, sprints-index, and test plans
    - Templates provide standard formats for consistency
 
-4. **Understand user request:**
-   - Are they creating a new backlog?
-   - Are they scheduling a sprint?
-   - Are they adding to features knowledge base?
+7. **Understand user request:**
+   - Are they initializing sprint management for the first time? (requires Step 1 approval)
+   - Are they creating a new backlog? (skip to Step 2)
+   - Are they scheduling a sprint? (skip to Step 3 with approval)
+   - Are they adding to features knowledge base? (skip to Step 4)
 
-### Step 1: Managing Backlogs
+8. Proceed to appropriate step based on user request
+
+### Step 1: Initialize Sprint Management (First Time Only)
+
+**CRITICAL: Only for first-time setup. Create README with approval before creating sprint structure.**
+
+**If `09-sprints/` already exists, skip this step.**
+
+1. **Analyze information from previous stages:**
+   - Read all stage folders (02-08) to understand project context
+   - Consider cost-budget constraints for sprint planning
+   - Estimate number of sprints needed based on MVP scope
+
+2. **Create 09-sprints/README.md with sprint plan:**
+   - **Stage overview and objectives**
+   - **Owners:** Project Manager (lead), Tech Manager, Product Manager, AI Engineer, Legal Advisor, Customer Support, Content Moderator, UI Designer
+   - **Sprint management approach:**
+     - How backlogs will be created and prioritized
+     - How sprints will be planned and executed
+     - What features knowledge base will track
+   - **Initial sprint estimate:**
+     - Estimated number of sprints for MVP
+     - Estimated sprint duration
+   - **Budget allocation for development** (from cost-budget.md)
+   - **Status:** In Progress (update to "Completed" when project finishes)
+
+3. **Present README to user:**
+   - Show the sprint management approach
+   - Explain backlog types and sprint workflow
+   - Ask: "Does this sprint management plan look good? Should I proceed with creating sprint structure?"
+
+4. **Wait for user approval:**
+   - **If user says yes:** Create initial folder structure and proceed to Step 2
+   - **If user says no:**
+     - Ask what needs to be changed
+     - Update README based on feedback
+     - Ask for approval again
+
+5. **After approval, create initial structure:**
+   ```
+   09-sprints/
+   ├── README.md (already created and approved)
+   ├── sprints-index.md (create from template)
+   └── backlogs/ (empty initially)
+   ```
+
+### Step 2: Managing Backlogs
 
 #### Creating a New Backlog
 
@@ -143,33 +207,61 @@ Track backlog lifecycle:
 - **Testing** - Under test
 - **Done** - Completed and verified
 
-### Step 2: Sprint Planning
+### Step 3: Sprint Planning
+
+**IMPORTANT: Get user approval before finalizing sprint plan.**
 
 #### Creating a Sprint
 
-Each sprint should have:
+1. **Draft sprint plan including:**
 
-1. **Sprint Goals:**
-   - Clear objectives for the sprint
-   - What will be delivered to end users
+   - **Sprint Goals:**
+     - Clear objectives for the sprint
+     - What will be delivered to end users
 
-2. **Backlog Selection (5-7 backlogs recommended):**
-   - Mix of feature, change, bug, and improve types
-   - Consider dependencies between backlogs
-   - Ensure backlogs are properly sized
+   - **Backlog Selection (5-7 backlogs recommended):**
+     - Mix of feature, change, bug, and improve types
+     - Consider dependencies between backlogs
+     - Ensure backlogs are properly sized
 
-3. **End User Test Plan:**
-   - Comprehensive test plan for the entire sprint
-   - Should be executable by non-technical users
-   - Could be used in a customer showcase/demo meeting
-   - Include curl, web UI, or CLI commands
-   - NOT just unit tests or log checks
+   - **End User Test Plan:**
+     - Comprehensive test plan for the entire sprint
+     - Should be executable by non-technical users
+     - Could be used in a customer showcase/demo meeting
+     - Include curl, web UI, or CLI commands
+     - NOT just unit tests or log checks
 
-4. **Sprint Timeline:**
-   - Estimated duration
-   - Key milestones
+   - **Sprint Timeline:**
+     - Estimated duration
+     - Key milestones
 
-### Step 3: Prioritizing and Scheduling
+2. **Present sprint plan to user for approval:**
+   - Show which backlogs will be included
+   - Explain sprint goals and deliverables
+   - Review end-user test plan
+   - Ask: "Does this sprint plan look good? Should I proceed with scheduling these backlogs?"
+
+3. **Wait for user approval:**
+   - **If user says yes:** Create sprint folder and schedule backlogs
+   - **If user says no:**
+     - Ask what needs to be changed
+     - Adjust sprint plan based on feedback
+     - Ask for approval again
+
+4. **After approval, create sprint structure:**
+   ```
+   09-sprints/sprint-001/
+   ├── sprint-plan.md (save approved plan)
+   ├── test-plan.md (save approved test plan)
+   └── backlogs/ (symlinks to scheduled backlogs)
+   ```
+
+5. **Update sprints-index.md:**
+   - Add new sprint entry
+   - Update current sprint pointer
+   - Track sprint status
+
+### Step 4: Prioritizing and Scheduling
 
 #### Prioritization Criteria
 
