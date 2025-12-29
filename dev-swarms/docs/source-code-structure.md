@@ -41,17 +41,20 @@ When creating `07-tech-specs/source-code-structure.md`, include:
    └── tests/          # Integration tests
    ```
 
-   **Option C: Frontend/Backend Split:**
+   **Option C: Monorepo:**
    ```
    src/
    ├── frontend/
    │   ├── components/
    │   ├── pages/
    │   └── shared/
-   └── backend/
-       ├── api/
-       ├── services/
-       └── database/
+   ├── backend/
+   │   ├── api/
+   │   ├── services/
+   │   └── database/
+   └── macro services/
+       ├── cpu video processor/
+       └── gpu video generator/
    ```
 
    **Option D: Simple Flat Structure (Small Projects):**
