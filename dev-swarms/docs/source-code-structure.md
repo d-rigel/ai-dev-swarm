@@ -19,6 +19,50 @@ When creating `07-tech-specs/source-code-structure.md`, include:
    - Provide a concrete `src/` tree example
    - Explain the rationale for the chosen strategy
 
+   Common strategies you can choose from:
+
+   **Option A: Layer-Based (Traditional):**
+   ```
+   src/
+   ├── controllers/    # HTTP request handlers
+   ├── services/       # Business logic
+   ├── models/         # Data models
+   ├── utils/          # Utilities
+   └── tests/          # Tests
+   ```
+
+   **Option B: Modular/Domain-Based:**
+   ```
+   src/
+   ├── auth/           # Authentication module
+   ├── users/          # User management module
+   ├── payments/       # Payment module
+   ├── shared/         # Shared code
+   └── tests/          # Integration tests
+   ```
+
+   **Option C: Frontend/Backend Split:**
+   ```
+   src/
+   ├── frontend/
+   │   ├── components/
+   │   ├── pages/
+   │   └── shared/
+   └── backend/
+       ├── api/
+       ├── services/
+       └── database/
+   ```
+
+   **Option D: Simple Flat Structure (Small Projects):**
+   ```
+   src/
+   ├── main.py
+   ├── utils.py
+   ├── config.py
+   └── tests/
+   ```
+
 3. **Naming Conventions**
    - File naming rules (case, separators)
    - Test naming rules (e.g., `.test.*`, `.spec.*`, `test_*`)

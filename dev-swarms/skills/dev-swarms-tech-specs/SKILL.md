@@ -477,49 +477,7 @@ Define the organization and structure of source code under the `src/` folder bas
 
 2. **Choose Organization Strategy:**
 
-   Select and document the code organization strategy that best fits the project. Common approaches:
-
-   **Option A: Layer-Based (Traditional):**
-   ```
-   src/
-   ├── controllers/    # HTTP request handlers
-   ├── services/       # Business logic
-   ├── models/         # Data models
-   ├── utils/          # Utilities
-   └── tests/          # Tests
-   ```
-
-   **Option B: Modular/Domain-Based:**
-   ```
-   src/
-   ├── auth/           # Authentication module
-   ├── users/          # User management module
-   ├── payments/       # Payment module
-   ├── shared/         # Shared code
-   └── tests/          # Integration tests
-   ```
-
-   **Option C: Frontend/Backend Split:**
-   ```
-   src/
-   ├── frontend/
-   │   ├── components/
-   │   ├── pages/
-   │   └── shared/
-   └── backend/
-       ├── api/
-       ├── services/
-       └── database/
-   ```
-
-   **Option D: Simple Flat Structure (Small Projects):**
-   ```
-   src/
-   ├── main.py
-   ├── utils.py
-   ├── config.py
-   └── tests/
-   ```
+   Select and document the code organization strategy that best fits the project. Use the options listed in `dev-swarms/docs/source-code-structure.md` for the sample structures.
 
 3. **File Naming Conventions:**
    - Define file naming conventions (e.g., kebab-case, snake_case, PascalCase)
