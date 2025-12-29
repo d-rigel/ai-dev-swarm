@@ -156,6 +156,7 @@ Follow these steps in order:
    ├── security.md (if specified in README)
    ├── theme-standards.md (if specified in README - MUST extract from UX mockup)
    ├── coding-standards.md (if specified in README)
+   ├── source-code-structure.md (if specified in README)
    ├── testing-standards.md (if specified in README)
    └── security-standards.md (if specified in README)
    ```
@@ -460,6 +461,79 @@ Define code style rules and conventions:
    - bugfix/[bug-description]
    - hotfix/[issue-number]
 
+**source-code-structure.md (CRITICAL - Code Organization in src/):**
+
+Define the organization and structure of source code under the `src/` folder based on the project's needs:
+
+1. **Overview:**
+   - Explain the chosen code organization approach
+   - Purpose: Enable AI developers to navigate and locate code efficiently
+   - Maintain clear separation of concerns
+   - Support scalability and maintainability
+
+2. **Choose Organization Strategy:**
+
+   Select and document the code organization strategy that best fits the project. Common approaches:
+
+   **Option A: Layer-Based (Traditional):**
+   ```
+   src/
+   ├── controllers/    # HTTP request handlers
+   ├── services/       # Business logic
+   ├── models/         # Data models
+   ├── utils/          # Utilities
+   └── tests/          # Tests
+   ```
+
+   **Option B: Modular/Domain-Based:**
+   ```
+   src/
+   ├── auth/           # Authentication module
+   ├── users/          # User management module
+   ├── payments/       # Payment module
+   ├── shared/         # Shared code
+   └── tests/          # Integration tests
+   ```
+
+   **Option C: Frontend/Backend Split:**
+   ```
+   src/
+   ├── frontend/
+   │   ├── components/
+   │   ├── pages/
+   │   └── shared/
+   └── backend/
+       ├── api/
+       ├── services/
+       └── database/
+   ```
+
+   **Option D: Simple Flat Structure (Small Projects):**
+   ```
+   src/
+   ├── main.py
+   ├── utils.py
+   ├── config.py
+   └── tests/
+   ```
+
+3. **File Naming Conventions:**
+   - Define file naming conventions (e.g., kebab-case, snake_case, PascalCase)
+   - Test file conventions (e.g., `.test.*`, `.spec.*`, `test_*`)
+   - Type definition conventions (e.g., `.types.*`, `types.*`)
+
+4. **Code Organization Principles:**
+   - **Single Responsibility**: One file, one primary purpose
+   - **Clear Entry Points**: Well-defined public APIs
+   - **Co-located Tests**: Tests live near the code they test
+   - **Shared Code**: Define when code should be shared vs duplicated
+
+5. **Documentation Requirements:**
+   - Document where each type of code belongs
+   - Provide examples for common scenarios
+   - Explain the rationale for the chosen structure
+   - Define guidelines for adding new code
+
 **testing-standards.md:**
 
 Define testing requirements and standards:
@@ -722,6 +796,7 @@ project-root/
     ├── security.md (auth, secrets, threats)
     ├── theme-standards.md (EXTRACTED FROM UX MOCKUP)
     ├── coding-standards.md (style, naming, organization)
+    ├── source-code-structure.md (src/ organization)
     ├── testing-standards.md (coverage, frameworks, gates)
     └── security-standards.md (secure coding, logging redaction)
 ```
@@ -753,6 +828,7 @@ By the end of this stage, you should have:
 - Security posture and authentication approach defined
 - **Theme standards extracted from approved UX mockup** (colors, fonts, spacing)
 - Coding standards for style, naming, and organization
+- **Source code structure for feature-driven development** (src/ organization)
 - Testing standards with coverage requirements and frameworks
 - Security standards for secure coding and logging
 - Foundation for DevOps setup (next stage)

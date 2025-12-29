@@ -20,9 +20,30 @@ This skill performs comprehensive code review and quality audits. As a Senior Co
 
 This skill requires:
 - Completed code implementation
+- `07-tech-specs/` - Engineering standards, including source-code-structure.md and coding-standards.md
 - `features/` folder with feature design and implementation docs
 - `09-sprints/` folder with backlog that was implemented
+- `src/` folder (organized as defined in source-code-structure.md)
 - Access to source code files
+
+## Feature-Driven Code Review Workflow
+
+**CRITICAL:** This skill follows a strict feature-driven approach where `feature-name` is the index for the entire project:
+
+**For Each Backlog:**
+1. Read backlog.md from `09-sprints/[sprint]/[BACKLOG_TYPE]-[feature-name]-<sub-feature>.md`
+2. Extract the `feature-name` from the backlog file name
+3. Read `features/features-index.md` to find the feature file
+4. Read feature documentation in this order:
+   - `features/[feature-name].md` - Feature definition (WHAT/WHY/SCOPE)
+   - `features/flows/[feature-name].md` - User flows and process flows (if exists)
+   - `features/contracts/[feature-name].md` - API/data contracts (if exists)
+   - `features/impl/[feature-name].md` - Implementation notes (if exists)
+5. Locate source code in `src/` using `features/impl/[feature-name].md`
+6. Review code against design specs and coding standards
+7. Update `backlog.md` with review findings
+
+This approach ensures AI reviewers can review large projects without reading all code at once.
 
 ## Your Roles in This Skill
 
@@ -76,41 +97,52 @@ The code review process:
 
 Follow these steps in order:
 
-### Step 0: Verify Prerequisites and Gather Context
+### Step 0: Verify Prerequisites and Gather Context (Feature-Driven Approach)
 
-1. **Identify what to review:**
-   - User specifies backlog or feature to review
+**IMPORTANT:** Follow this exact order to efficiently locate all relevant context:
+
+1. **Identify the backlog to review:**
+   - User specifies which backlog to review
    - Or review latest completed backlog from sprint
 
-```
-project-root/
-├── 09-sprints/
-│   └── sprint-name/
-│       └── [BACKLOG-TYPE]-feature-name.md # find entry point for a task
-```
+   ```
+   09-sprints/
+   └── sprint-name/
+       └── [BACKLOG_TYPE]-[feature-name]-<sub-feature>.md
+   ```
 
-2. **Read backlog from `09-sprints/`:**
+2. **Read the backlog file:**
    - Understand original task requirements
    - Note acceptance criteria
+   - **Extract the `feature-name`** from the file name (CRITICAL)
    - Review test plan expectations
-   - Identify backlog type (feature/change/bug/improve)
+   - Identify backlog type (FEATURE/CHANGE/BUG/IMPROVE)
 
-3. **Read feature design from `features/{feature}.md`:**
-   - Understand intended approach
-   - Note architectural decisions
-   - Review flows and contracts if they exist
-   - Understand "what" and "why"
+3. **Read coding standards:**
+   - Read `07-tech-specs/coding-standards.md`
+   - Understand code style requirements and conventions
+   - Read `07-tech-specs/source-code-structure.md`
+   - Understand expected code organization
 
-4. **Read implementation docs from `features/impl/{feature}.md`:**
-   - Identify files that were changed
-   - Understand implementation approach
-   - Note key functions and components
-   - Get keywords for code search
+4. **Read feature documentation (using feature-name as index):**
+   - Read `features/features-index.md` to confirm feature exists
+   - Read `features/[feature-name].md` - Feature definition (intended behavior)
+   - Read `features/flows/[feature-name].md` - User flows (review against these)
+   - Read `features/contracts/[feature-name].md` - API contracts (verify implementation)
+   - Read `features/impl/[feature-name].md` - Implementation notes (what was built)
 
-5. **Prepare for deep dive:**
-   - List all files mentioned in impl docs
-   - Note areas requiring special attention
-   - Consider security, performance, and maintainability
+5. **Locate source code:**
+   - Use `features/impl/[feature-name].md` to find code locations
+   - Navigate to `src/[feature-name]/` directory
+   - List all files mentioned in implementation docs
+   - Identify files to review
+
+6. **Prepare for deep dive:**
+   - Note areas requiring special attention (security, performance)
+   - Consider dependencies and integration points
+   - Review development notes from backlog.md
+
+**DO NOT** read the entire codebase. Use `feature-name` to find only relevant files.
 
 ### Step 1: Review Code Implementation
 
@@ -303,17 +335,38 @@ For each issue found, create a backlog:
    - **Changes required**: Critical issues must be fixed
    - **Rejected**: Major redesign needed
 
-### Step 6: Update Documentation
+### Step 6: Update Backlog with Code Review Results
 
-1. **Add review notes to feature:**
-   - Update `features/impl/{feature}.md` with review findings
-   - Note any important discoveries
-   - Document known limitations
+**CRITICAL:** Update the backlog.md file to track code review progress:
 
-2. **Track review status:**
-   - Mark backlog as "Reviewed"
-   - Note review date and outcome
-   - Link to any created backlogs
+1. **Update backlog status:**
+   - Change status from "In Code Review" to "In Testing" (if approved)
+   - Or change to "In Development" (if changes required)
+   - Add a "Code Review Notes" section if not present
+
+2. **Document code review findings:**
+   - **Review Summary:** Overall assessment of code quality
+   - **Review Decision:** Approved, Approved with comments, Changes required, or Rejected
+   - **Issues Found:** Count of CHANGE/BUG/IMPROVE backlogs created
+   - **Security Assessment:** Security vulnerabilities found (if any)
+   - **Code Quality Score:** Rating based on quality dimensions
+   - **Positive Highlights:** What was done well
+   - **Areas for Improvement:** General suggestions for developer
+   - **Related Backlogs:** Link to created CHANGE/BUG/IMPROVE backlogs
+
+3. **Update feature documentation:**
+   - Update `features/impl/[feature-name].md` with review findings
+   - Note any important discoveries or patterns
+   - Document known limitations identified
+   - Add review insights for future reference
+
+4. **Notify user:**
+   - Summarize code review results
+   - Report approval/rejection status
+   - List critical issues found
+   - Recommend next steps (fix issues, proceed to testing, etc.)
+
+**This backlog.md update creates an audit trail showing code review was completed and results.**
 
 ## Expected Workflow
 

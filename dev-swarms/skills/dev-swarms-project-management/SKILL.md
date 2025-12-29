@@ -1,20 +1,19 @@
 ---
 name: dev-swarms-project-management
-description: Plan sprints and backlogs in a feature-driven AI development workflow. Create, prioritize, schedule backlogs (feature/change/bug/improve), and maintain features knowledge base. Use when managing development lifecycle, creating sprints, or organizing backlogs.
+description: Plan sprints and backlogs in a feature-driven AI development workflow. Create, prioritize, and schedule backlogs (FEATURE/CHANGE/BUG/IMPROVE). Use when managing development lifecycle, creating sprints, or organizing backlogs.
 ---
 
 # AI Builder - Project Management
 
-This skill manages the complete sprint and backlog lifecycle for AI-driven feature development. As a Project Manager expert, you'll create and organize backlogs, schedule sprints, prioritize work, and maintain the features knowledge base for efficient AI-driven development.
+This skill manages the complete sprint and backlog lifecycle for AI-driven feature development. As a Project Manager expert, you'll create and organize backlogs, schedule sprints, and prioritize work for efficient AI-driven development.
 
 ## When to Use This Skill
 
 - User asks to create or manage sprints
 - User requests to create, update, or prioritize backlogs
 - User wants to schedule work or plan a sprint
-- User needs to organize features into the knowledge base
 - User wants to view sprint status or backlog priorities
-- After code review or testing phases identify new backlogs (change/bug/improve)
+- After code review or testing phases identify new backlogs (CHANGE/BUG/IMPROVE)
 
 ## Prerequisites
 
@@ -24,12 +23,27 @@ This skill works with the following folder structure:
 - `04-prd/` - Product requirements and non-functional constraints
 - `05-ux/` - UX flows, states, and mockups that shape backlog acceptance
 - `06-architecture/` - System structure and dependencies that affect sequencing
-
+- `07-tech-specs/` - Technology choices and standards (including source-code-structure.md)
+- `08-devops/` - Environment/tooling readiness and constraints
 - `09-sprints/` - Active sprint and backlog management
+
+## Sprint and Backlog Guidelines Reference
+
+This skill follows the sprint and backlog creation rules defined in `dev-swarms/docs/sprint-backlog-guidelines.md`. When creating or updating sprints and backlogs, ensure they follow these guidelines:
+
+**Key Rules from sprint-backlog-guidelines.md:**
+- **Backlog Size**: Maximum 150 lines of code (or equivalent logical scope)
+- **Testability**: Each backlog must be testable (unit test, UI test, CLI test, or log verification)
+- **Definition of Done**: Must state expected behavior, test method, and success criteria
+- **Sprint Size**: Maximum 7 backlog items per sprint
+- **Sprint Outcome**: Must be testable and reviewable
+- **Sprint Acceptance**: All backlog tests pass, demo/review completed, human approval obtained
+
+These rules ensure AI agents can move fast while humans maintain control and quality.
 
 ## Your Roles in This Skill
 
-- **Project Manager**: Lead sprint planning and backlog management across the entire project. Break down epics and user stories into implementable backlogs. Prioritize work based on dependencies, business value, and technical constraints. Schedule backlogs across sprints to maintain steady delivery. Track progress, identify blockers, and adjust plans. Organize features into the knowledge base. Maintain project velocity and ensure sprint goals are achievable.
+- **Project Manager**: Lead sprint planning and backlog management across the entire project. Break down epics and user stories into implementable backlogs. Prioritize work based on dependencies, business value, and technical constraints. Schedule backlogs across sprints to maintain steady delivery. Track progress, identify blockers, and adjust plans. Maintain project velocity and ensure sprint goals are achievable.
 
 - **Tech Manager (Architect)**: Create backlogs for system architecture, infrastructure, and technical foundations. Define technical stack, frameworks, and development standards. Plan database architecture, API design patterns, and integration strategies. Identify technical dependencies and advise on backlog sequencing (infrastructure before features, backend before frontend). Flag technical risks, complexity estimates, and architectural constraints. Create backlogs for DevOps, CI/CD, monitoring, and system scalability.
 
@@ -68,10 +82,26 @@ This communication pattern ensures transparency and allows for human-in-the-loop
 
 There are 4 types of backlogs:
 
-1. **feature** - A new feature request (initial development)
-2. **change** - Modifications to an existing feature (initial eature request didn't meet design requirements)
-3. **bug** - Defects found during code review or testing to a feature
-4. **improve** - Optimization or enhancement of existing code related to a feature
+1. **FEATURE** - A new feature request (initial development)
+2. **CHANGE** - Modifications to an existing feature (initial feature request didn't meet design requirements)
+3. **BUG** - Defects found during code review or testing to a feature
+4. **IMPROVE** - Optimization or enhancement of existing code related to a feature
+
+## Backlog Naming Convention (CRITICAL)
+
+**Format:** `[BACKLOG_TYPE]-[feature-name]-<sub-feature>.md`
+
+- **BACKLOG_TYPE**: One of FEATURE, CHANGE, BUG, or IMPROVE (uppercase)
+- **feature-name**: Kebab-case feature identifier (e.g., `user-auth`, `payment-processing`)
+- **sub-feature**: Optional sub-feature identifier (only for large features that are hard to split)
+
+**Examples:**
+- `FEATURE-user-auth-login.md`
+- `CHANGE-user-auth-logout.md`
+- `BUG-payment-processing-refund.md`
+- `IMPROVE-user-auth-session.md`
+
+**Each step MUST update the backlog.md file to track progress and findings.**
 
 ## Instructions
 
@@ -122,7 +152,7 @@ Follow these steps in order:
    - Are they initializing sprint management for the first time? (requires Step 1 approval)
    - Are they creating a new backlog? (skip to Step 2)
    - Are they scheduling a sprint? (skip to Step 3 with approval)
-   - Are they adding to features knowledge base? (skip to Step 4)
+   - Are they prioritizing or scheduling backlogs? (skip to Step 4)
 
 8. Proceed to appropriate step based on user request
 
@@ -143,10 +173,10 @@ Follow these steps in order:
    - **Sprint management approach:**
      - How backlogs will be created and prioritized
      - How sprints will be planned and executed
-     - What features knowledge base will track
+     - Backlog types (FEATURE/CHANGE/BUG/IMPROVE) and workflow
    - **Initial sprint estimate:**
      - Estimated number of sprints for MVP
-     - Estimated sprint duration
+     - Estimated sprint duration (following sprint-backlog-guidelines.md: max 7 backlogs per sprint)
    - **Budget allocation for development** (from cost-budget.md)
    - **Status:** In Progress (update to "Completed" when project finishes)
 
@@ -162,56 +192,87 @@ Follow these steps in order:
      - Update README based on feedback
      - Ask for approval again
 
-5. **After approval, create initial structure:**
-   ```
-   09-sprints/
-   ├── README.md (already created and approved)
-   ├── sprints-index.md (create from template)
-   └── backlogs/ (empty initially)
-   ```
 
 ### Step 2: Managing Backlogs
 
 #### Creating a New Backlog
 
+**CRITICAL:** Follow `dev-swarms/docs/sprint-backlog-guidelines.md` when creating backlogs.
+
 When creating backlogs, each must include:
 
-1. **Title and Type:**
-   - Clear, descriptive title
-   - Type: feature, change, bug, or improve
-   - If modifying existing feature, type should be `change`, `bug`, or `improve`
+1. **File Naming (CRITICAL):**
+   - Use format: `[BACKLOG_TYPE]-[feature-name]-<sub-feature>.md`
+   - BACKLOG_TYPE: FEATURE, CHANGE, BUG, or IMPROVE (uppercase)
+   - Place in sprint folder: `09-sprints/[sprint-name]/[BACKLOG_TYPE]-[feature-name]-<sub-feature>.md`
 
-2. **Task Description:**
+2. **Size Constraint (from sprint-backlog-guidelines.md):**
+   - **Maximum 150 lines of code** (or equivalent logical scope)
+   - If backlog feels "big," split it into smaller backlogs
+   - Use LOC as a warning signal, judge by complexity and risk
+
+3. **Title and Type:**
+   - Clear, descriptive title
+   - Type: FEATURE, CHANGE, BUG, or IMPROVE
+   - If modifying existing feature, type should be CHANGE, BUG, or IMPROVE
+
+4. **Task Description:**
    - What needs to be done from user perspective
    - Why this work is needed
-   - Success criteria
+   - Success criteria (Definition of Done)
+   - How it relates to the overall feature
 
-3. **Reference Features:**
-   - List features from `features/` that are related if have
+5. **Reference Features Documentation:**
+   - List related features from `features/features-index.md`
    - These provide context without reading entire project
-   - Reference `features/features-index.md` to find relevant features
 
-4. **Test Plan:**
-   - How to verify the backlog is complete
+6. **Test Plan (MANDATORY per sprint-backlog-guidelines.md):**
+   - **MUST** specify at least one test method:
+     - Unit test
+     - UI testing (manual or automated)
+     - Command-line testing (curl, CLI tools)
+     - Log verification
+   - Define expected behavior
+   - Define test method
+   - Define success criteria
    - Should be testable by non-technical users when possible
-   - Include curl commands, CLI steps, or web UI tests
+   - A backlog without a clear test method is not valid
 
-5. **Priority:**
-   - Set initial priority (will be refined during sprint planning)
-   - Consider dependencies and business value
+7. **Acceptance Criteria:**
+   - Clear checklist of what must be done
+   - Testable and verifiable
+   - Defines when backlog is "Done"
+
+8. **Development Notes Section:**
+   - Add empty sections for: Development, Code Review, Testing
+   - Each role will fill in their findings as they work
+   - Track progress through the dev -> review -> test workflow
 
 #### Updating Backlog Status
 
-Track backlog lifecycle:
+Track backlog lifecycle through the development workflow:
+
 - **Not Started** - Backlog created but not in active sprint
-- **In Progress** - Currently being worked on
-- **In Review** - Code complete, awaiting review
-- **Testing** - Under test
-- **Done** - Completed and verified
+- **In Development** - AI Developer is implementing code
+- **In Code Review** - AI Code Reviewer is reviewing implementation
+- **In Testing** - AI Tester is executing tests
+- **Done** - All steps completed and verified
+
+**IMPORTANT:** Each role (Developer, Reviewer, Tester) MUST update the backlog.md file with their findings:
+- Developer: Add development notes, code changes, implementation decisions
+- Reviewer: Add review results, code quality assessment, issues found
+- Tester: Add test execution results, pass/fail status, bugs found
+
+This creates a complete audit trail of the backlog's journey from creation to completion.
 
 ### Step 3: Sprint Planning
 
 **IMPORTANT: Get user approval before finalizing sprint plan.**
+
+**Follow sprint-backlog-guidelines.md:**
+- Maximum 7 backlog items per sprint
+- Sprint must be testable and reviewable
+- Sprint acceptance requires: all tests pass, demo/review completed, human approval
 
 #### Creating a Sprint
 
@@ -221,10 +282,12 @@ Track backlog lifecycle:
      - Clear objectives for the sprint
      - What will be delivered to end users
 
-   - **Backlog Selection (5-7 backlogs recommended):**
-     - Mix of feature, change, bug, and improve types
+   - **Backlog Selection (Maximum 7 backlogs per sprint-backlog-guidelines.md):**
+     - **CRITICAL**: No more than 7 backlog items
+     - Mix of FEATURE, CHANGE, BUG, and IMPROVE types
      - Consider dependencies between backlogs
-     - Ensure backlogs are properly sized
+     - Ensure backlogs are properly sized (≤150 LOC each)
+     - Verify each backlog has a clear test method
 
    - **End User Test Plan:**
      - Comprehensive test plan for the entire sprint
@@ -252,7 +315,7 @@ Track backlog lifecycle:
 
 4. **After approval, create sprint structure:**
    ```
-   09-sprints/sprint-001/
+   09-sprints/sprint-name/
    ├── sprint-plan.md (save approved plan)
    ├── test-plan.md (save approved test plan)
    └── backlogs/ (symlinks to scheduled backlogs)
@@ -282,15 +345,21 @@ When new backlogs are created (by code review or test skills):
 
 ```
 project-root/
-├── 09-sprints/
-│   ├── README.md (all sprints with priority sorted links)
-│   ├── sprint-name-b/
-│   │   ├── README.md
-│   │   ├── {BACKLOG_TYPE}-{feature-name-d}.md
-│   │   ├── {BACKLOG_TYPE}-{feature-name-e}.md
-│   │   ├── {BACKLOG_TYPE}-{feature-name-f}.md
-│   └── sprint-name-c/
-│       └── ...
+│
+└── 09-sprints/
+    ├── README.md                                    # All sprints (priority sorted)
+    │
+    ├── user-auth/
+    │   ├── README.md                                # Sprint overview and status
+    │   ├── FEATURE-user-auth-login.md              # New feature backlog
+    │   ├── FEATURE-user-auth-logout.md             # New feature backlog
+    │   └── FEATURE-user-auth-session.md            # New feature backlog
+    │
+    └── payment/
+        ├── README.md
+        ├── FEATURE-payment-processing-charge.md    # New feature backlog
+        ├── CHANGE-user-auth-login.md               # Change to existing feature
+        └── BUG-user-auth-session.md                # Bug fix backlog
 ```
 
 ## Available Templates

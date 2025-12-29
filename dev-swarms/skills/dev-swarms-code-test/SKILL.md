@@ -21,9 +21,30 @@ This skill creates and executes comprehensive test suites to verify code quality
 This skill requires:
 - Code implementation completed
 - Code review completed (recommended)
+- `07-tech-specs/` - Engineering standards, including source-code-structure.md and testing-standards.md
 - `features/` folder with feature design and implementation docs
 - `09-sprints/` folder with backlog and test plan
+- `src/` folder (organized as defined in source-code-structure.md)
 - Access to source code and running environment
+
+## Feature-Driven Testing Workflow
+
+**CRITICAL:** This skill follows a strict feature-driven approach where `feature-name` is the index for the entire project:
+
+**For Each Backlog:**
+1. Read backlog.md from `09-sprints/[sprint]/[BACKLOG_TYPE]-[feature-name]-<sub-feature>.md`
+2. Extract the `feature-name` from the backlog file name
+3. Read `features/features-index.md` to find the feature file
+4. Read feature documentation in this order:
+   - `features/[feature-name].md` - Feature definition (WHAT/WHY/SCOPE)
+   - `features/flows/[feature-name].md` - User flows and process flows (if exists)
+   - `features/contracts/[feature-name].md` - API/data contracts (if exists)
+   - `features/impl/[feature-name].md` - Implementation notes (if exists)
+5. Locate code and test files in `src/` using `features/impl/[feature-name].md`
+6. Write/execute tests following `07-tech-specs/testing-standards.md`
+7. Update `backlog.md` with test results and findings
+
+This approach ensures AI testers can test large projects without reading all code at once.
 
 ## Your Roles in This Skill
 
@@ -76,44 +97,56 @@ This skill handles multiple test types:
 
 Follow these steps in order:
 
-### Step 0: Verify Prerequisites and Gather Context
+### Step 0: Verify Prerequisites and Gather Context (Feature-Driven Approach)
 
-1. **Identify what to test:**
-   - User specifies backlog or feature to test
+**IMPORTANT:** Follow this exact order to efficiently locate all relevant context:
+
+1. **Identify the backlog to test:**
+   - User specifies which backlog to test
    - Or test latest reviewed backlog from sprint
 
-```
-project-root/
-├── 09-sprints/
-│   └── sprint-name/
-│       └── [BACKLOG-TYPE]-feature-name.md # find entry point for a task
-```
+   ```
+   09-sprints/
+   └── sprint-name/
+       └── [BACKLOG_TYPE]-[feature-name]-<sub-feature>.md
+   ```
 
-2. **Read backlog from `09-sprints/`:**
+2. **Read the backlog file:**
    - Understand requirements and acceptance criteria
    - Read the test plan defined in backlog
-   - Note backlog type (feature/change/bug/improve)
+   - **Extract the `feature-name`** from the file name (CRITICAL)
+   - Note backlog type (FEATURE/CHANGE/BUG/IMPROVE)
    - Identify success criteria
 
-3. **Read sprint test plan:**
-   - Check `09-sprints/sprint-XX/test-plan.md`
+3. **Read testing standards:**
+   - Read `07-tech-specs/testing-standards.md`
+   - Understand test coverage requirements
+   - Note test frameworks and conventions
+
+4. **Read feature documentation (using feature-name as index):**
+   - Read `features/features-index.md` to confirm feature exists
+   - Read `features/[feature-name].md` - Feature definition (expected behavior)
+   - Read `features/flows/[feature-name].md` - User flows (test these flows)
+   - Read `features/contracts/[feature-name].md` - API contracts (test these contracts)
+   - Read `features/impl/[feature-name].md` - Implementation notes (what was built)
+
+5. **Locate code and tests:**
+   - Use `features/impl/[feature-name].md` to find code locations
+   - Navigate to `src/` directory
+   - Check existing test files in `src/` (locations from features/impl/[feature-name].md)
+   - Identify files to test
+
+6. **Read sprint test plan:**
+   - Check `09-sprints/sprint/README.md` for sprint-level test plan
    - Understand end-user test scenarios
    - Note manual vs automated test requirements
 
-4. **Read feature design from `features/{feature}.md`:**
-   - Understand expected behavior
-   - Note flows and contracts
-   - Identify edge cases mentioned
-
-5. **Read implementation docs from `features/impl/{feature}.md`:**
-   - Identify what was implemented
-   - Find files to test
-   - Understand architecture
-
-6. **Determine test scope:**
+7. **Determine test scope:**
    - What test types are needed?
    - Manual or automated or both?
    - Environment requirements?
+
+**DO NOT** read the entire codebase. Use `feature-name` to find only relevant files.
 
 ### Step 1: Design Test Strategy
 
@@ -384,14 +417,34 @@ Document test results:
    - **Failed**: Critical issues must be fixed before release
    - **Blocked**: Cannot test due to environment or dependency issues
 
-### Step 9: Update Documentation
+### Step 9: Update Backlog with Test Results
 
-1. **Update test documentation:**
-   - Add test results to backlog
-   - Mark backlog as "Tested"
-   - Link to created bug/change/improve backlogs
+**CRITICAL:** Update the backlog.md file to track testing progress:
 
-2. **Update feature documentation:**
-   - Add test notes to `features/impl/{feature}.md`
-   - Document known issues or limitations
+1. **Update backlog status:**
+   - Change status from "In Testing" to "Done" (if all tests pass)
+   - Or change to "In Development" (if bugs found requiring fixes)
+   - Add a "Testing Notes" section if not present
+
+2. **Document testing findings:**
+   - **Test Summary:** Total tests executed, passed, failed
+   - **Test Types Executed:** Unit, integration, API, UI, manual
+   - **Test Coverage:** Percentage of code/features tested
+   - **Issues Found:** Count of CHANGE/BUG/IMPROVE backlogs created
+   - **Test Decision:** Passed, Passed with minor issues, Failed, or Blocked
+   - **Test Evidence:** Screenshots, logs, performance metrics
+   - **Related Backlogs:** Link to created CHANGE/BUG/IMPROVE backlogs
+
+3. **Update feature documentation:**
+   - Add test notes to `features/impl/[feature-name].md`
+   - Document known issues or limitations discovered
    - Note test coverage achieved
+   - Update with any testing insights
+
+4. **Notify user:**
+   - Summarize test results
+   - Report pass/fail status
+   - List critical issues found
+   - Recommend next steps (fix bugs, deploy, etc.)
+
+**This backlog.md update creates an audit trail showing testing was completed and results.**

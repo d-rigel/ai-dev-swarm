@@ -65,6 +65,7 @@ project-root/
 │  ├─ tech-stack.md                  # Languages/frameworks/db/cloud provider choices
 │  ├─ theme-standards.md             # UI theme rules (fonts/sizes/colors) if doing UI
 │  ├─ coding-standards.md            # Code style rules, repo conventions, naming, formatting
+│  ├─ source-code-structure.md       # Define the source code structure under folder `src/`
 │  ├─ testing-standards.md           # Required tests, naming, running, minimum gates
 │  └─ security-standards.md          # Secure coding rules, scanning, logging redaction rules
 │

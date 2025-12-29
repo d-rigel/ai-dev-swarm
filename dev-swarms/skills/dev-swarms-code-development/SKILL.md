@@ -18,10 +18,29 @@ This skill implements backlogs through a structured feature-driven approach. As 
 ## Prerequisites
 
 This skill requires:
-- `07-tech-specs/` - Engineering standards and constraints for delivery
+- `07-tech-specs/` - Engineering standards and constraints
 - `09-sprints/` folder with active sprint and backlogs
 - `features/` folder with features-index.md (existing features knowledge base)
-- Understanding of the backlog type: feature, change, bug, or improve
+- Understanding of the backlog type: FEATURE, CHANGE, BUG, or IMPROVE
+
+## Feature-Driven Development Workflow
+
+**CRITICAL:** This skill follows a strict feature-driven approach where `feature-name` is the index for the entire project:
+
+**For Each Backlog:**
+1. Read `backlog` from `09-sprints/[sprint]/[BACKLOG_TYPE]-[feature-name]-<sub-feature>.md`
+2. Extract the `feature-name` from the backlog file name
+3. Read `features/features-index.md` to find the feature file
+4. Read feature documentation in this order:
+   - `features/[feature-name].md` - Feature definition (WHAT/WHY/SCOPE)
+   - `features/flows/[feature-name].md` - User flows and process flows (if exists)
+   - `features/contracts/[feature-name].md` - API/data contracts (if exists)
+   - `features/impl/[feature-name].md` - Implementation notes (if exists)
+5. Locate source code at `src/` using `features/impl/[feature-name].md`
+6. Implement the code following `07-tech-specs/`
+7. Update `backlog` with development notes
+
+This approach ensures AI developers can work on large projects without reading all code at once.
 
 ## Your Roles in This Skill
 
@@ -64,32 +83,48 @@ Follow these steps in order for coding development:
 
 ### Step 0: Verify Prerequisites and Gather Context
 
-1. Identify the backlog which you will work on:
+**IMPORTANT:** Follow this exact order to efficiently locate all relevant context:
+
+1. **Identify the backlog:**
    - User specifies which backlog to work on
    - Or you select next backlog from `09-sprints/` in order
 
-```
-project-root/
-├── 09-sprints/
-│   └── sprint-name/
-│       └── [BACKLOG-TYPE]-feature-name.md # find entry point for a task
-```
+   ```
+   09-sprints/
+   └── sprint-name/
+       └── [BACKLOG_TYPE]-[feature-name]-<sub-feature>.md
+   ```
 
-2. Read all the content in folder `07-tech-specs/` to understand the full project requirement
-3. Read backlog file from `09-sprints/`:
-   - Understand task description
-   - Note backlog type (feature/change/bug/improve)
-   - Review reference features listed if having
-   - Understand test plan requirements
-4. Read `features/features-index.md` (Only the backlog has reference features listed):
-   - Understand existing features in the system
-   - Identify related features for this backlog
-   - Read the feature's flow/contract/impl reference files as need
+2. **Read the backlog file:**
+   - Understand task description and requirements
+   - Note backlog type (FEATURE/CHANGE/BUG/IMPROVE)
+   - **Extract the `feature-name`** from the file name (CRITICAL)
+   - Review test plan requirements
+   - Identify acceptance criteria
 
-5. Understand codebase patterns
-   - Identify coding conventions from referenced features
-   - Understand project structure and file organization
-   - Note architectural patterns in use
+3. **Read source code structure standards:**
+   - Read `07-tech-specs/source-code-structure.md`
+   - Note file naming conventions and directory structure
+
+4. **Read feature documentation (using feature-name as index):**
+   - Read `features/features-index.md` to confirm feature exists
+   - Read `features/[feature-name].md` - Feature definition (WHAT/WHY/SCOPE)
+   - Read `features/flows/[feature-name].md` - User flows (if exists)
+   - Read `features/contracts/[feature-name].md` - API contracts (if exists)
+   - Read `features/impl/[feature-name].md` - Implementation notes (if exists)
+
+5. **Locate existing source code:**
+   - Use `features/impl/[feature-name].md` to find code locations
+   - Navigate to `src/` directory
+   - Review existing code structure and patterns
+   - Identify files to modify (CHANGE/BUG/IMPROVE) or create (FEATURE)
+
+6. **Understand codebase patterns:**
+   - Read `07-tech-specs/coding-standards.md` for coding conventions
+   - Review existing code in `src/` using locations from `features/impl/[feature-name].md`
+   - Note architectural patterns and integration points
+
+**DO NOT** read the entire codebase. Use `features/impl/[feature-name].md` to find only relevant files in `src/`.
 
 ### Step 1: Design the Implementation
 
@@ -114,14 +149,19 @@ Before writing code, create the feature design document:
 
 Once user approves the design:
 
-1. **Write the code:**
+1. **Organize code in src/:**
+   - Follow `07-tech-specs/source-code-structure.md` for file organization
+   - Place code in appropriate locations within `src/` as defined by source-code-structure.md
+   - Use file naming conventions defined in source-code-structure.md
+
+2. **Write the code:**
    - Implement according to the approved design
-   - Follow coding standards from existing features
+   - Follow coding standards from `07-tech-specs/coding-standards.md`
    - Write clean, modular, maintainable code
    - Include appropriate error handling
    - Avoid over-engineering (keep it simple)
 
-2. **Code quality guidelines:**
+3. **Code quality guidelines:**
    - **Modular**: Break code into small, focused functions/components
    - **Readable**: Clear variable names, self-documenting code
    - **Simple**: Don't add features not in requirements
@@ -216,36 +256,59 @@ Before marking complete:
    - List any test results
    - Flag anything needing QA attention
 
-### Step 5: Mark Backlog Complete
+### Step 5: Update Backlog with Development Notes
+
+**CRITICAL:** Update the backlog.md file to track development progress:
 
 1. **Update backlog status:**
-   - Update backlog file to mark as "Done" or "Ready for Review"
-   - Add completion notes if any
+   - Change status from "Not Started" to "In Code Review"
+   - Add a "Development Notes" section if not present
 
-2. **Notify user:**
+2. **Document development findings:**
+   - **Files Created/Modified:** List all files changed with brief descriptions
+   - **Implementation Approach:** Summarize how requirements were implemented
+   - **Key Decisions:** Note any important technical decisions made
+   - **Integration Points:** Document how code integrates with other features
+   - **Known Issues:** Flag any potential issues for code review
+   - **Test Notes:** Any preliminary testing done during development
+
+3. **Reference documentation created:**
+   - Link to `features/[feature-name].md`
+   - Link to `features/impl/[feature-name].md`
+   - Link to source code files in `src/` (locations documented in features/impl/[feature-name].md)
+
+4. **Notify user:**
    - Summarize what was implemented
    - Reference documentation created
    - Note any important decisions or tradeoffs
-   - Suggest what's next (code review or testing)
+   - Suggest next step: "Ready for code review"
+
+**This backlog.md update creates an audit trail for code review and testing phases.**
 
 ## Expected File Structure
 
 ```
 project-root/
+├── 07-tech-specs/
+│   ├── source-code-structure.md            # Code organization guide
+│   └── coding-standards.md                 # Coding conventions
+│
 ├── 09-sprints/
 │   └── sprint-name/
-│       └── [BACKLOG-TYPE]-feature-name.md # the entry point for a task
-├── features/
-│   ├── features-index.md 
-│   ├── feautue-name.md
+│       └── [BACKLOG_TYPE]-[feature-name]-<sub-feature>.md # Backlog entry point
+│
+├── features/                                # Features knowledge base
+│   ├── features-index.md                   # Index of all features
+│   ├── [feature-name].md                   # Feature definition (WHAT/WHY/SCOPE)
 │   ├── flows/
-│   │   └── feautue-name.md (if needed)
+│   │   └── [feature-name].md               # User flows (if needed)
 │   ├── contracts/
-│   │   └── feautue-name.md (if needed)
+│   │   └── [feature-name].md               # API contracts (if needed)
 │   └── impl/
-│       └── feautue-name.md
-└── src/ (or your code directory)
-    └── [actual code files]
+│       └── [feature-name].md               # Implementation notes (code locations)
+│
+└── src/                                     # Source code
+    └── [organized as defined in 07-tech-specs/source-code-structure.md]
 ```
 
 ## File Templates
