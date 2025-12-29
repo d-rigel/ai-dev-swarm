@@ -65,8 +65,7 @@ Follow these steps in order:
      - Feature list and priorities
 
 3. **Check if `00-init-ideas/` folder exists (recommended):**
-   - If found: Read to understand:
-     - Cost budget (to understand constraints for this stage)
+   - If found: Read to understand all files
 
 4. **Check if `03-mvp/` folder exists (recommended):**
    - If found: Read to understand:
@@ -103,6 +102,7 @@ Follow these steps in order:
    - Consider cost-budget constraints for this stage
 
 2. **Create or update 06-architecture/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: system-overview.md, architecture-diagram.md, data-flow.md, deployment-boundaries.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** Tech Manager (lead), Backend Architect, Frontend Architect, AI Engineer, Content Moderator, DevOps Engineer
    - **What architecture will include:**

@@ -66,8 +66,7 @@ Follow these steps in order:
      - **Component styles**
 
 3. **Check if `00-init-ideas/` folder exists (recommended):**
-   - If found: Read to understand:
-     - Cost budget (to understand constraints for this stage)
+   - If found: Read all files to understand it
 
 4. **Check if `04-prd/` folder exists (recommended):**
    - If found: Read to understand:
@@ -114,6 +113,7 @@ Follow these steps in order:
    - Consider cost-budget constraints for this stage
 
 2. **Create or update 07-tech-specs/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: tech-stack.md, security.md, theme-standards.md, coding-standards.md, source-code-structure.md, testing-standards.md, security-standards.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** Tech Manager (lead), Security Engineer, UI Designer, DevOps Engineer
    - **What tech specs will include:**

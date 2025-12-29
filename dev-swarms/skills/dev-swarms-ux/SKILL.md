@@ -101,6 +101,7 @@ Follow these steps in order:
    - Consider cost-budget constraints for this stage
 
 2. **Create or update 05-ux/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: user-flows.md, interaction-specs.md, edge-cases.md, accessibility.md, mockups/)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** UX Designer (lead), UI Designer, Product Manager, Content Moderator
    - **What UX will include:**

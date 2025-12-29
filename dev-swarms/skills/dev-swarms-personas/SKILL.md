@@ -89,6 +89,7 @@ Follow these steps in order:
    - Consider cost-budget constraints for this stage
 
 2. **Create or update 02-personas/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: persona-primary.md, persona-secondary.md, user-stories.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** Product Manager, UX Designer
    - **What personas will be created:**

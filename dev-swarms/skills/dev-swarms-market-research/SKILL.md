@@ -45,12 +45,7 @@ Follow these steps in order:
 
 1. **Check if `00-init-ideas/` folder exists (mandatory):**
    - If NOT found: Inform user they need to init ideas first, then STOP
-   - If found: Read all files to understand:
-     - Problem statement
-     - Target users
-     - Value proposition
-     - Owner requirements
-     - **Cost budget** (to understand token/cost constraints for this stage)
+   - If found: Read all files to understand.
 
 2. **Check if this stage should be skipped:**
    - Check if `01-market-research/SKIP.md` exists
@@ -98,6 +93,7 @@ Follow these steps in order:
    - **Don't assume file names** - read whatever exists in the folder
 
 2. **Create or update 01-market-research/README.md:**
+   - List deliverables explicitly in README (typical: market-overview.md, competitor-analysis.md, gap-analysis.md, pricing-research.md, validation-findings.md)
    - **Stage overview and objectives** (based on init-ideas context)
    - **Owners:** Product Manager, Data Analyst, Marketing Manager
    - **Research goal:**

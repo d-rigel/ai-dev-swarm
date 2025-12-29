@@ -96,6 +96,7 @@ Follow these steps in order:
    - Consider cost-budget constraints for this stage
 
 2. **Create or update 03-mvp/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: mvp-scope.md, out-of-scope.md, success-metrics.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** Product Manager, Tech Manager, UX Designer
    - **What MVP will be defined:**

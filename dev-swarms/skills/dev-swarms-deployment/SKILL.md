@@ -61,8 +61,7 @@ Follow these steps in order:
      - Deployment needs
 
 3. **Check if `00-init-ideas/` folder exists (recommended):**
-   - If found: Read to understand:
-     - Cost budget (to understand constraints for deployment)
+   - If found: Read to understand all files
 
 4. **Check if this stage should be skipped:**
    - Check if `10-deployment/SKIP.md` exists
@@ -131,6 +130,7 @@ Follow these steps in order:
    - Assess application readiness from Step 0
 
 2. **Create or update 10-deployment/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: infrastructure-plan.md, cicd-pipeline.md, deployment-strategy.md, monitoring-logging.md, environment-config.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** Deployment Engineer (lead), DevOps Engineer, SysOps Engineer, Site Reliability Engineer
    - **What deployment will include:**

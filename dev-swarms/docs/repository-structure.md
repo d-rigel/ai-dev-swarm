@@ -82,6 +82,7 @@ project-root/
 │
 ├─ 09-sprints/                       # Stage 9: AI-accelerated development execution with backlog types
 │  ├─ README.md                      # Folder overview and guide
+│  ├─ sprint-feature-proposal.md     # Proposed sprint feature list for user approval before creating sprints/backlogs
 │  │
 │  ├─ user-auth/                      # Backlogs of each sprint
 │  │  ├─ README.md                    # Sprint overview, status, and plan

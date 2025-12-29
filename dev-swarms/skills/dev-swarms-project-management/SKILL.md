@@ -157,7 +157,8 @@ Follow these steps in order:
    - Consider cost-budget constraints for sprint planning
    - Estimate number of sprints needed based on MVP scope
 
-2. **Create 09-sprints/README.md with sprint plan:**
+2. **Create 09-sprints/README.md with sprint plan (design requirement file for Stage 9):**
+   - Stage docs list for 09-sprints/: `README.md`, `sprint-feature-proposal.md`, sprint folders (each with `README.md` and backlog files)
    - **Stage overview and objectives**
    - **Owners:** Project Manager (lead), Tech Manager, Product Manager, AI Engineer, Legal Advisor, Customer Support, Content Moderator, UI Designer
    - **Sprint management approach:**
@@ -170,12 +171,18 @@ Follow these steps in order:
    - **Budget allocation for development** (from cost-budget.md)
    - **Status:** In Progress (update to "Completed" when project finishes)
 
-3. **Present README to user:**
+3. **Create 09-sprints/sprint-feature-proposal.md (template-driven):**
+   - Use the template in `dev-swarms/skills/dev-swarms-project-management/templates/sprint-feature-proposal.md`
+   - Propose sprint names and feature lists (no backlogs yet)
+   - This file must be reviewed together with README before creating any sprint folder or backlog files
+
+4. **Present README and sprint-feature-proposal.md to user:**
    - Show the sprint management approach
    - Explain backlog types and sprint workflow
+   - Review proposed sprint feature list
    - Ask: "Does this sprint management plan look good? Should I proceed with creating sprint structure?"
 
-4. **Wait for user approval:**
+5. **Wait for user approval:**
    - **If user says yes:** Create initial folder structure and proceed to Step 2
    - **If user says no:**
      - Ask what needs to be changed
@@ -293,13 +300,18 @@ This creates a complete audit trail of the backlog's journey from creation to co
    - Ask: "Does this sprint plan look good? Should I proceed with scheduling these backlogs?"
 
 3. **Wait for user approval:**
-   - **If user says yes:** Create sprint folder and schedule backlogs
+   - **If user says yes:** Create sprint README first and ask for confirmation before creating backlog files
    - **If user says no:**
      - Ask what needs to be changed
      - Adjust sprint plan based on feedback
      - Ask for approval again
 
-4. **After approval, create sprint structure:**
+4. **After approval, create sprint README first:**
+   - Create `09-sprints/[sprint-name]/README.md` as the sprint design requirement file
+   - Ask user to review and confirm sprint README
+   - **Only after user confirms** create backlog files for that sprint
+
+5. **After README confirmation, create sprint structure:**
    ```
    09-sprints/sprint-name/
    ├── sprint-plan.md (save approved plan)
@@ -307,7 +319,7 @@ This creates a complete audit trail of the backlog's journey from creation to co
    └── backlogs/ (symlinks to scheduled backlogs)
    ```
 
-5. **Update sprints-index.md:**
+6. **Update sprints-index.md:**
    - Add new sprint entry
    - Update current sprint pointer
    - Track sprint status
@@ -355,6 +367,6 @@ This skill provides the following templates in the `templates/` folder:
 1. **sprints-readme.md** - Template for README.md in `09-sprints/`
 2. **sprint-readme.md** - Template for README.md in each sprint folder
 3. **backlog.md** - Template for creating backlog file in each sprint folder
+4. **sprint-feature-proposal.md** - Template for 09-sprints/sprint-feature-proposal.md
 
 Use these templates when creating new sprints and backlogs to ensure consistency across the project.
-

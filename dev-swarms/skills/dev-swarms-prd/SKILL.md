@@ -104,6 +104,7 @@ Follow these steps in order:
    - Consider cost-budget constraints for this stage
 
 2. **Create or update 04-prd/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: prd.md, functional-requirements.md, non-functional-requirements.md, out-of-scope.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** Product Manager (lead), UX Designer, Tech Manager
    - **What PRD will include:**

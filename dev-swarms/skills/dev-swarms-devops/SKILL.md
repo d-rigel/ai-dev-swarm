@@ -50,8 +50,7 @@ Follow these steps in order:
      - Infrastructure requirements
 
 2. **Check if `00-init-ideas/` folder exists (recommended):**
-   - If found: Read to understand:
-     - Cost budget (to understand constraints for this stage)
+   - If found: Read to understand all files
 
 3. **Check if this stage should be skipped:**
    - Check if `08-devops/SKIP.md` exists
@@ -100,6 +99,7 @@ Follow these steps in order:
    - Assess current environment status
 
 2. **Create or update 08-devops/README.md with refined requirements:**
+   - List deliverables explicitly in README (typical: github-setup.md, mcp-setup.md, vscode-devcontainer.md)
    - **Stage overview and objectives** (based on previous stage context)
    - **Owners:** DevOps Engineer (lead), Infrastructure Architect
    - **What devops setup will include:**

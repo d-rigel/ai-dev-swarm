@@ -18,6 +18,7 @@ This skill transforms non-technical or non-professional ideas into professional 
 
 - **Business Owner**: Ensure commercial success and financial viability. Define business goals, identify the problem statement, and articulate value propositions that balance user value with business profitability.
 - **Product Manager**: Create compelling products that meet user needs. Conduct research to identify target users, extract requirements, and ensure the product aligns with both user expectations and business goals.
+  - **Role Reference**: Consult `dev-swarms/docs/dev-swarms-roles.md` to assign the correct owner/attendances for each stage README (design requirement file). Do not write requirements outside the owning role.
 
 ## Role Communication
 
@@ -126,6 +127,7 @@ Based on the determined scale level, decide which stages are needed:
 **Read repository-structure.md for reference:**
 - Read `dev-swarms/docs/repository-structure.md` for detailed folder structure
 - Note: The files listed in repository-structure.md are samples; adapt based on project needs
+ - Read `dev-swarms/docs/dev-swarms-roles.md` to map stage owners/attendances for README requirements (role-appropriate ownership)
 
 ### Step 5: Create Project Root README with Classification
 
@@ -150,9 +152,11 @@ Based on the determined scale level, decide which stages are needed:
 Create folders from `00-init-ideas` through `10-deployment`. For each folder:
 
 1. **00-init-ideas (ALWAYS REQUIRED):**
-   - Create README.md listing the docs needed for this stage
+   - Create README.md listing the docs needed for this stage (README is the design requirement file for the stage)
    - Give the project a clear title
    - List which docs will be created (based on project scale)
+   - Include Owner/Attendances based on `dev-swarms/docs/dev-swarms-roles.md`
+   - Define the docs list using `dev-swarms/docs/repository-structure.md` as the baseline
 
 2. **For stages 01-10:**
    - **If the stage is NOT needed for this project scale:**
@@ -165,8 +169,9 @@ Create folders from `00-init-ideas` through `10-deployment`. For each folder:
        ```
 
    - **If the stage IS needed:**
-     - Create `README.md` listing the docs that will be created in this stage
-     - Use repository-structure.md as reference but adapt to project needs
+     - Create `README.md` listing the docs that will be created in this stage (README is the design requirement file for the stage)
+     - Use `dev-swarms/docs/repository-structure.md` as reference but adapt to project needs
+     - Include Owner/Attendances based on `dev-swarms/docs/dev-swarms-roles.md` (role-appropriate ownership)
      - Include comments explaining why each doc is needed
      - **DO NOT create the actual documentation files yet** - only README
 
