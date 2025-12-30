@@ -1,44 +1,23 @@
-# Ideas (Draft)
+# School Result Management System (SRMS)
 
-This is the starting point for an AI-assisted project kickoff. Keep it rough, honest, and incomplete. You and the AI agent will iterate together to refine it into professional documentation.
+## Problem
 
-## How We’ll Brainstorm Together
+Managing student grades manually is time-consuming, prone to calculation errors, and makes it difficult to track long-term academic progress across different terms and sessions.
 
-- You write quick, imperfect notes
-- The AI proposes clearer structure, gaps, and options
-- You confirm, correct, or add details
-- We repeat until it is ready for formal stages
+## Solution
 
-## Project Snapshot (Draft)
+A centralized digital platform that automates grading logic, ranks students based on performance, and generates professional, downloadable report cards while maintaining strict administrative control.
 
-**Working title:** [Project name or codename]
+## Users
 
-**One-line idea:** [What this is in a single sentence]
+Both public and private schools (Administrators, Teachers, and Students/Parents).
 
-**Problem to solve:** [Pain or inefficiency you want to fix]
+## Features I Want
 
-**Target users:** [Who feels the pain most]
-
-**Why now:** [Timing, trend, or trigger]
-
-## Goals and Outcomes (Draft)
-
-- Primary goal: [What success looks like]
-- Secondary goals: [Nice-to-haves or long-term bets]
-- Non-goals: [What this project will NOT do]
-
-## Requirements and Constraints (Draft)
-
-- Must have: [Core behaviors, features, or guarantees]
-- Constraints: [Budget, timeline, tech, compliance, or policy limits]
-- Dependencies: [APIs, vendors, datasets, teams]
-
-## Risks and Unknowns (Draft)
-
-- Biggest risks: [What could fail]
-- Open questions: [What you are unsure about]
-- Assumptions: [What you are currently betting on]
-
-## Notes and Rough Ideas (Draft)
-
-[Add bullets, sketches, or raw ideas here...]
+- **Custom Grading Scale:** Ability to define specific grade boundaries (e.g., A=75-100 or A=80-100) per department or level.
+- **Auto Position Calculation:** The system must automatically rank students within a class or subject based on their total scores.
+- **Subject Weighting:** Support for different score weights (e.g., Continuous Assessment = 30%, Exams = 70%).
+- **PDF Result Export:** Generate clean, print-ready report cards for students to download.
+- **Term/Session History:** A robust archive to view and compare results from previous years or terms.
+- **Admin Override:** A high-level permission feature allowing administrators to manually adjust scores or settings if errors are found after submission.
+- Please consider a very good user experience and accessibility and responsive design perfect for devices

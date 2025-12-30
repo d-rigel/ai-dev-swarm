@@ -1,19 +1,30 @@
-## 🤖 What is AI Dev Swarm?
+# School Result Management System (SRMS)
 
-AI Dev Swarm is an AI-powered development framework designed to turn a simple idea into a full-stack, commercial-ready product — automatically.
+A centralized digital platform that automates grading logic, ranks students based on performance, and generates professional, downloadable report cards while maintaining strict administrative control.
 
-No coding knowledge required.
-No tech background needed.
-Just an idea.
+---
 
-AI Dev Swarm guides you step by step through the entire product lifecycle.
+## Project Classification
 
-AI handles everything.
-You focus on vision and decisions.
+**Project Purpose:** P4 (Commercial/Profit-Oriented Product)  
+**Development Scale:** L4 (Product MVP)
 
-Our goal is simple but ambitious:
+This project explicitly DOES NOT include:
+- Enterprise-level RBAC with complex permission hierarchies beyond admin/teacher/student roles
+- Perfect horizontal scalability for millions of concurrent users (optimized for up to 10,000 students per school)
+- Full automation of all administrative tasks (manual override capabilities maintained)
+- Multi-region deployment with active-active replication
+- Real-time collaboration features (asynchronous workflow is sufficient for MVP)
+- Offline-first mobile applications (web-responsive design only for MVP)
+- Integration with legacy school management systems (manual data import for MVP)
 
-Enable a one-person company to become real — powered by AI.
+---
+
+## Current Status
+**Stage:** 00-init-ideas ✅ (Completed 2025-12-30)
+
+## Development Framework
+This project uses **AI Dev Swarm** - an AI-powered development framework designed to turn a simple idea into a full-stack, commercial-ready product — automatically.
 
 ## Support
 
@@ -52,6 +63,7 @@ For `Gemini CLI` or other AI Agents that do not support Agent skills natively, y
 Start with your ideas in `ideas.md`, then progress through structured stages:
 
 **Planning & Strategy (Stages 0-4)**
+
 - **Stage 0: Init Ideas** - Transform informal ideas into professional project documentation
 - **Stage 1: Market Research** - Validate the problem and analyze competitive landscape
 - **Stage 2: Personas** - Define user personas and prioritized user stories (P0/P1/P2)
@@ -59,11 +71,13 @@ Start with your ideas in `ideas.md`, then progress through structured stages:
 - **Stage 4: PRD** - Create comprehensive product requirements document
 
 ### Design & Architecture (Stages 5-7)
+
 - **Stage 5: UX Design** - Design user flows, interactions, and mockups
 - **Stage 6: Architecture** - Define system components, data flow, and deployment boundaries
 - **Stage 7: Tech Specs** - Specify tech stack, security, coding standards, and theme guidelines
 
 ### Development & Deployment (Stages 8-10)
+
 - **Stage 8: DevOps** - Setup development environment, GitHub, MCP tools, and Docker
 - **Stage 9: Sprints** - AI-accelerated feature development with backlogs and testing
 - **Stage 10: Deployment** - Deploy to staging/production with CI/CD pipelines
@@ -79,11 +93,13 @@ Start with your ideas in `ideas.md`, then progress through structured stages:
 ## Getting Started
 
 **For Beginners:**
+
 1. Read the [Complete User Manual](USER-MANUAL.md) - designed for non-technical users
 2. Write your ideas in `ideas.md`
 3. Use `/stage 0` command to start your AI-powered development journey
 
 **For Experienced Users:**
+
 1. Review the initial project documentation in `00-init-ideas/`
 2. Follow the dev-swarms methodology through each stage
 3. Use AI agents to accelerate development and maintain quality
@@ -91,6 +107,7 @@ Start with your ideas in `ideas.md`, then progress through structured stages:
 ## Skills Available
 
 This project uses the dev-swarms framework skills:
+
 - **init-ideas** - Project kickoff and idea formalization
 - **market-research** - Market validation and competitive analysis
 - **personas** - User personas and story creation
